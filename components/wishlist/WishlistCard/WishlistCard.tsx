@@ -11,6 +11,7 @@ import type { Product } from '@commerce/types/product'
 import usePrice from '@framework/product/use-price'
 import useAddItem from '@framework/cart/use-add-item'
 import useRemoveItem from '@framework/wishlist/use-remove-item'
+import { FormattedMessage } from 'react-intl'
 
 interface Props {
   product: Product
@@ -88,7 +89,7 @@ const WishlistCard: FC<Props> = ({ product }) => {
           onClick={addToCart}
           loading={loading}
         >
-          Add to Cart
+          <FormattedMessage id="add_to_cart" />
         </Button>
       </div>
       <div className="col-span-2 flex flex-col justify-between">

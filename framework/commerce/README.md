@@ -53,7 +53,7 @@ This component adds the provider config and handlers to the context of your Reac
 ```jsx
 import { CommerceProvider } from '@framework'
 
-const App = ({ locale = 'en-US', children }) => {
+const App = ({ locale = 'en', children }) => {
   return <CommerceProvider locale={locale}>{children}</CommerceProvider>
 }
 ```

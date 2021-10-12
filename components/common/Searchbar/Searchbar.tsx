@@ -2,7 +2,7 @@ import { FC, memo, useEffect } from 'react'
 import cn from 'classnames'
 import s from './Searchbar.module.css'
 import { useRouter } from 'next/router'
-
+import { useIntl, FormattedMessage } from 'react-intl'
 interface Props {
   className?: string
   id?: string
@@ -10,6 +10,7 @@ interface Props {
 
 const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
   const router = useRouter()
+  const intl = useIntl();
 
   useEffect(() => {
     router.prefetch('/search')
@@ -35,12 +36,12 @@ const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
   return (
     <div className={cn(s.root, className)}>
       <label className="hidden" htmlFor={id}>
-        Search
+        <FormattedMessage id="search" />
       </label>
       <input
         id={id}
         className={s.input}
-        placeholder="Search for products..."
+        placeholder={intl.formatMessage({id: 'search_placeholder'})}
         defaultValue={router.query.q}
         onKeyUp={handleKeyUp}
       />

@@ -14,7 +14,7 @@
 }
 
 .primary {
-  @apply bg-accent-0;
+  @apply bg-accent-2;
 }
 
 .secondary {

@@ -52,7 +52,7 @@ export default function Home({
           />
         ))}
       </Grid>
-      <Marquee variant="secondary">
+      <Marquee variant="primary">
         {products.slice(0, 3).map((product: any, i: number) => (
           <ProductCard key={product.id} product={product} variant="slim" />
         ))}

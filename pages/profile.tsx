@@ -3,6 +3,7 @@ import useCustomer from '@framework/customer/use-customer'
 import commerce from '@lib/api/commerce'
 import { Layout } from '@components/common'
 import { Container, Text } from '@components/ui'
+import { FormattedMessage } from 'react-intl'
 
 export async function getStaticProps({
   preview,
@@ -24,18 +25,18 @@ export default function Profile() {
   const { data } = useCustomer()
   return (
     <Container>
-      <Text variant="pageHeading">My Profile</Text>
+      <Text variant="pageHeading"><FormattedMessage id="my_profile" /></Text>
       {data && (
         <div className="grid lg:grid-cols-12">
           <div className="lg:col-span-8 pr-4">
             <div>
-              <Text variant="sectionHeading">Full Name</Text>
+              <Text variant="sectionHeading"><FormattedMessage id="full_name" /></Text>
               <span>
                 {data.firstName} {data.lastName}
               </span>
             </div>
             <div className="mt-5">
-              <Text variant="sectionHeading">Email</Text>
+              <Text variant="sectionHeading"><FormattedMessage id="email" /></Text>
               <span>{data.email}</span>
             </div>
           </div>

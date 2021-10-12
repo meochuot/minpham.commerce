@@ -17,6 +17,7 @@ const ProductTag: React.FC<ProductTagProps> = ({
 }) => {
   return (
     <div className={cn(s.root, className)}>
+      <div className={s.price}>{price}</div>
       <h3 className={s.name}>
         <span
           className={cn({ [s.fontsizing]: fontSize < 32 })}
@@ -28,7 +29,7 @@ const ProductTag: React.FC<ProductTagProps> = ({
           {name}
         </span>
       </h3>
-      <div className={s.price}>{price}</div>
+      
     </div>
   )
 }

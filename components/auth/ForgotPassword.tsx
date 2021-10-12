@@ -2,6 +2,7 @@ import { FC, useEffect, useState, useCallback } from 'react'
 import { validate } from 'email-validator'
 import { useUI } from '@components/ui/context'
 import { Logo, Button, Input } from '@components/ui'
+import { FormattedMessage } from 'react-intl'
 
 interface Props {}
 
@@ -56,18 +57,18 @@ const ForgotPassword: FC<Props> = () => {
             loading={loading}
             disabled={disabled}
           >
-            Recover Password
+            <FormattedMessage id="recover_password" />
           </Button>
         </div>
 
         <span className="pt-3 text-center text-sm">
-          <span className="text-accent-7">Do you have an account?</span>
+          <span className="text-accent-7"><FormattedMessage id="do_you_have_an_account" /></span>
           {` `}
           <a
             className="text-accent-9 font-bold hover:underline cursor-pointer"
             onClick={() => setModalView('LOGIN_VIEW')}
           >
-            Log In
+            <FormattedMessage id="login" />
           </a>
         </span>
       </div>

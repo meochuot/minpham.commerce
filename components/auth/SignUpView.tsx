@@ -4,6 +4,7 @@ import { Info } from '@components/icons'
 import { useUI } from '@components/ui/context'
 import { Logo, Button, Input } from '@components/ui'
 import useSignup from '@framework/auth/use-signup'
+import { FormattedMessage } from 'react-intl'
 
 interface Props {}
 
@@ -41,7 +42,8 @@ const SignUpView: FC<Props> = () => {
       setLoading(false)
       closeModal()
     } catch ({ errors }) {
-      setMessage(errors[0].message)
+      let message = (errors as any)[0].message || '';
+      setMessage(message)
       setLoading(false)
     }
   }
@@ -81,8 +83,7 @@ const SignUpView: FC<Props> = () => {
             <Info width="15" height="15" />
           </span>{' '}
           <span className="leading-6 text-sm">
-            <strong>Info</strong>: Passwords must be longer than 7 chars and
-            include numbers.{' '}
+            <strong><FormattedMessage id="info" /></strong>: <FormattedMessage id="password_warning" />{' '}
           </span>
         </span>
         <div className="pt-2 w-full flex flex-col">
@@ -92,18 +93,18 @@ const SignUpView: FC<Props> = () => {
             loading={loading}
             disabled={disabled}
           >
-            Sign Up
+            <FormattedMessage id="signup" />
           </Button>
         </div>
 
         <span className="pt-1 text-center text-sm">
-          <span className="text-accent-7">Do you have an account?</span>
+          <span className="text-accent-7"><FormattedMessage id="do_you_have_an_account" /></span>
           {` `}
           <a
             className="text-accent-9 font-bold hover:underline cursor-pointer"
             onClick={() => setModalView('LOGIN_VIEW')}
           >
-            Log In
+            <FormattedMessage id="login" />
           </a>
         </span>
       </div>

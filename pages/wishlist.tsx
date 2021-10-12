@@ -7,6 +7,7 @@ import { useCustomer } from '@framework/customer'
 import { WishlistCard } from '@components/wishlist'
 import useWishlist from '@framework/wishlist/use-wishlist'
 import rangeMap from '@lib/range-map'
+import { FormattedMessage } from 'react-intl'
 
 export async function getStaticProps({
   preview,
@@ -42,7 +43,7 @@ export default function Wishlist() {
   return (
     <Container>
       <div className="mt-3 mb-20">
-        <Text variant="pageHeading">My Wishlist</Text>
+        <Text variant="pageHeading"><FormattedMessage id="my_wishlist" /></Text>
         <div className="group flex flex-col">
           {isLoading ? (
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -58,10 +59,10 @@ export default function Wishlist() {
                 <Heart className="absolute" />
               </span>
               <h2 className="pt-6 text-2xl font-bold tracking-wide text-center">
-                Your wishlist is empty
+                <FormattedMessage id="wishlist_is_empty" />
               </h2>
               <p className="text-accent-6 px-10 text-center pt-2">
-                Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.
+                <FormattedMessage id="order_cart_checkout_warning" />
               </p>
             </div>
           ) : (

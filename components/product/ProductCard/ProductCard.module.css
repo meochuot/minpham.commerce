@@ -1,8 +1,9 @@
 .root {
   @apply relative max-h-full w-full box-border overflow-hidden
   bg-no-repeat bg-center bg-cover transition-transform
-  ease-linear cursor-pointer inline-block bg-accent-1;
+  ease-linear cursor-pointer inline-block bg-accent-2;
   height: 100% !important;
+  border: solid 1px var(--primary);
 }
 
 .root:hover {
@@ -13,37 +14,13 @@
   & .header .name span,
   & .header .price,
   & .wishlistButton {
-    @apply bg-secondary text-secondary;
-  }
-
-  &:nth-child(6n + 1) .header .name span,
-  &:nth-child(6n + 1) .header .price,
-  &:nth-child(6n + 1) .wishlistButton {
-    @apply bg-violet text-white;
-  }
-
-  &:nth-child(6n + 5) .header .name span,
-  &:nth-child(6n + 5) .header .price,
-  &:nth-child(6n + 5) .wishlistButton {
-    @apply bg-blue text-white;
-  }
-
-  &:nth-child(6n + 3) .header .name span,
-  &:nth-child(6n + 3) .header .price,
-  &:nth-child(6n + 3) .wishlistButton {
-    @apply bg-pink text-white;
-  }
-
-  &:nth-child(6n + 6) .header .name span,
-  &:nth-child(6n + 6) .header .price,
-  &:nth-child(6n + 6) .wishlistButton {
-    @apply bg-cyan text-white;
+    @apply bg-primary text-primary;
   }
 }
 
 .header {
   @apply transition-colors ease-in-out duration-500
-  absolute top-0 left-0 z-20 pr-16;
+  absolute bottom-0 left-0 z-20 pr-16;
 }
 
 .header .name {
@@ -82,7 +59,7 @@
 }
 
 .root .wishlistButton {
-  @apply top-0 right-0 z-30 absolute;
+  @apply bottom-0 right-0 z-30 absolute;
 }
 
 /* Variant Simple */

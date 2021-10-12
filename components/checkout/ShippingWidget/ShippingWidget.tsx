@@ -2,6 +2,7 @@ import { FC } from 'react'
 import s from './ShippingWidget.module.css'
 import { ChevronRight, MapPin, Check } from '@components/icons'
 import cn from 'classnames'
+import { FormattedMessage } from 'react-intl'
 
 interface ComponentProps {
   onClick?: () => any
@@ -17,7 +18,7 @@ const ShippingWidget: FC<ComponentProps> = ({ onClick, isValid }) => {
       <div className="flex flex-1 items-center">
         <MapPin className="w-5 flex" />
         <span className="ml-5 text-sm text-center font-medium">
-          Add Shipping Address
+          <FormattedMessage id="add_shipping_address" />
         </span>
         {/* <span>
           1046 Kearny Street.<br/>

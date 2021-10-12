@@ -9,6 +9,7 @@ import { Bag, Cross, Check } from '@components/icons'
 import useCart from '@framework/cart/use-cart'
 import usePrice from '@framework/product/use-price'
 import SidebarLayout from '@components/common/SidebarLayout'
+import { FormattedMessage } from 'react-intl'
 
 const CartSidebarView: FC = () => {
   const { closeSidebar, setSidebarView } = useUI()
@@ -45,10 +46,10 @@ const CartSidebarView: FC = () => {
             <Bag className="absolute" />
           </span>
           <h2 className="pt-6 text-2xl font-bold tracking-wide text-center">
-            Your cart is empty
+            <FormattedMessage id="cart_is_empty" />
           </h2>
           <p className="text-accent-3 px-10 text-center pt-2">
-            Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.
+            <FormattedMessage id="order_cart_checkout_warning" />
           </p>
         </div>
       ) : error ? (
@@ -57,8 +58,7 @@ const CartSidebarView: FC = () => {
             <Cross width={24} height={24} />
           </span>
           <h2 className="pt-6 text-xl font-light text-center">
-            We couldn’t process the purchase. Please check your card information
-            and try again.
+            <FormattedMessage id="checkout_check_cart" />
           </h2>
         </div>
       ) : success ? (
@@ -67,7 +67,7 @@ const CartSidebarView: FC = () => {
             <Check />
           </span>
           <h2 className="pt-6 text-xl font-light text-center">
-            Thank you for your order.
+            <FormattedMessage id="thank_you_order" />
           </h2>
         </div>
       ) : (
@@ -76,7 +76,7 @@ const CartSidebarView: FC = () => {
             <Link href="/cart">
               <a>
                 <Text variant="sectionHeading" onClick={handleClose}>
-                  My Cart
+                  <FormattedMessage id="my_cart" />
                 </Text>
               </a>
             </Link>
@@ -94,30 +94,30 @@ const CartSidebarView: FC = () => {
           <div className="flex-shrink-0 px-6 py-6 sm:px-6 sticky z-20 bottom-0 w-full right-0 left-0 bg-accent-0 border-t text-sm">
             <ul className="pb-2">
               <li className="flex justify-between py-1">
-                <span>Subtotal</span>
+                <span><FormattedMessage id="sub_total" /></span>
                 <span>{subTotal}</span>
               </li>
               <li className="flex justify-between py-1">
-                <span>Taxes</span>
-                <span>Calculated at checkout</span>
+                <span><FormattedMessage id="taxes" /></span>
+                <span><FormattedMessage id="calculated_at_checkout" /></span>
               </li>
               <li className="flex justify-between py-1">
-                <span>Shipping</span>
-                <span className="font-bold tracking-wide">FREE</span>
+                <span><FormattedMessage id="shipping" /></span>
+                <span className="font-bold tracking-wide"><FormattedMessage id="FREE" /></span>
               </li>
             </ul>
             <div className="flex justify-between border-t border-accent-2 py-3 font-bold mb-2">
-              <span>Total</span>
+              <span><FormattedMessage id="total" /></span>
               <span>{total}</span>
             </div>
             <div>
               {process.env.COMMERCE_CUSTOMCHECKOUT_ENABLED ? (
                 <Button Component="a" width="100%" onClick={goToCheckout}>
-                  Proceed to Checkout ({total})
+                  <FormattedMessage id="proceed_to_checkout" /> ({total})
                 </Button>
               ) : (
                 <Button href="/checkout" Component="a" width="100%">
-                  Proceed to Checkout
+                  <FormattedMessage id="proceed_to_checkout" />
                 </Button>
               )}
             </div>

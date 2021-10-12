@@ -2079,7 +2079,7 @@ type BooleanCustomFieldConfig implements CustomField {
 
 """
 Expects the same validation formats as the `<input type="datetime-local">` HTML element.
-See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/datetime-local#Additional_attributes
+See https://developer.mozilla.org/en/docs/Web/HTML/Element/input/datetime-local#Additional_attributes
 """
 type DateTimeCustomFieldConfig implements CustomField {
   name: String!

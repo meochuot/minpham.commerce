@@ -6,6 +6,7 @@ import { Layout } from '@components/common'
 import { Button, Text } from '@components/ui'
 import { Bag, Cross, Check, MapPin, CreditCard } from '@components/icons'
 import { CartItem } from '@components/cart'
+import { FormattedMessage } from 'react-intl'
 
 export async function getStaticProps({
   preview,
@@ -49,10 +50,10 @@ export default function Cart() {
               <Bag className="absolute" />
             </span>
             <h2 className="pt-6 text-2xl font-bold tracking-wide text-center">
-              Your cart is empty
+              <FormattedMessage id="cart_is_empty" />
             </h2>
             <p className="text-accent-6 px-10 text-center pt-2">
-              Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.
+            <FormattedMessage id="order_cart_checkout_warning" />
             </p>
           </div>
         ) : error ? (
@@ -61,8 +62,7 @@ export default function Cart() {
               <Cross width={24} height={24} />
             </span>
             <h2 className="pt-6 text-xl font-light text-center">
-              We couldn’t process the purchase. Please check your card
-              information and try again.
+              <FormattedMessage id="checkout_check_cart" />
             </h2>
           </div>
         ) : success ? (
@@ -71,13 +71,13 @@ export default function Cart() {
               <Check />
             </span>
             <h2 className="pt-6 text-xl font-light text-center">
-              Thank you for your order.
+              <FormattedMessage id="thank_you_order" />
             </h2>
           </div>
         ) : (
           <div className="px-4 sm:px-6 flex-1">
-            <Text variant="pageHeading">My Cart</Text>
-            <Text variant="sectionHeading">Review your Order</Text>
+            <Text variant="pageHeading"><FormattedMessage id="my_cart" /></Text>
+            <Text variant="sectionHeading"><FormattedMessage id="review_your_order" /></Text>
             <ul className="py-6 space-y-6 sm:py-0 sm:space-y-0 sm:divide-y sm:divide-accent-2 border-b border-accent-2">
               {data!.lineItems.map((item: any) => (
                 <CartItem
@@ -89,8 +89,7 @@ export default function Cart() {
             </ul>
             <div className="my-6">
               <Text>
-                Before you leave, take a look at these items. We picked them
-                just for you
+                <FormattedMessage id="cart_page_warning" />
               </Text>
               <div className="flex py-6 space-x-6">
                 {[1, 2, 3, 4, 5, 6].map((x) => (
@@ -115,7 +114,7 @@ export default function Cart() {
                   <MapPin />
                 </div>
                 <div className="text-sm text-center font-medium">
-                  <span className="uppercase">+ Add Shipping Address</span>
+                  <span className="uppercase">+ <FormattedMessage id="add_shipping_address" /></span>
                   {/* <span>
                     1046 Kearny Street.<br/>
                     San Franssisco, California
@@ -129,7 +128,7 @@ export default function Cart() {
                   <CreditCard />
                 </div>
                 <div className="text-sm text-center font-medium">
-                  <span className="uppercase">+ Add Payment Method</span>
+                  <span className="uppercase">+ <FormattedMessage id="add_payment_method" /></span>
                   {/* <span>VISA #### #### #### 2345</span> */}
                 </div>
               </div>
@@ -138,20 +137,20 @@ export default function Cart() {
           <div className="border-t border-accent-2">
             <ul className="py-3">
               <li className="flex justify-between py-1">
-                <span>Subtotal</span>
+                <span><FormattedMessage id="sub_total" /></span>
                 <span>{subTotal}</span>
               </li>
               <li className="flex justify-between py-1">
-                <span>Taxes</span>
-                <span>Calculated at checkout</span>
+                <span><FormattedMessage id="taxes" /></span>
+                <span><FormattedMessage id="calculated_at_checkout" /></span>
               </li>
               <li className="flex justify-between py-1">
-                <span>Estimated Shipping</span>
-                <span className="font-bold tracking-wide">FREE</span>
+                <span><FormattedMessage id="estimated_shipping" /></span>
+                <span className="font-bold tracking-wide"><FormattedMessage id="FREE" /></span>
               </li>
             </ul>
             <div className="flex justify-between border-t border-accent-2 py-3 font-bold mb-10">
-              <span>Total</span>
+              <span><FormattedMessage id="total" /></span>
               <span>{total}</span>
             </div>
           </div>
@@ -159,11 +158,11 @@ export default function Cart() {
             <div className="w-full lg:w-72">
               {isEmpty ? (
                 <Button href="/" Component="a" width="100%">
-                  Continue Shopping
+                  <FormattedMessage id="continue_shopping" />
                 </Button>
               ) : (
                 <Button href="/checkout" Component="a" width="100%">
-                  Proceed to Checkout
+                  <FormattedMessage id="proceed_to_checkout" />
                 </Button>
               )}
             </div>

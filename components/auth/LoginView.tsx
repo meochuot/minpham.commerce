@@ -1,8 +1,9 @@
-import { FC, useEffect, useState, useCallback } from 'react'
+import React, { FC, useEffect, useState, useCallback } from 'react'
 import { Logo, Button, Input } from '@components/ui'
 import useLogin from '@framework/auth/use-login'
 import { useUI } from '@components/ui/context'
 import { validate } from 'email-validator'
+import { FormattedMessage } from 'react-intl'
 
 interface Props {}
 
@@ -36,7 +37,8 @@ const LoginView: FC<Props> = () => {
       setLoading(false)
       closeModal()
     } catch ({ errors }) {
-      setMessage(errors[0].message)
+      let message = (errors as any)[0].message || '';
+      setMessage(message)
       setLoading(false)
       setDisabled(false)
     }
@@ -67,12 +69,12 @@ const LoginView: FC<Props> = () => {
       <div className="flex flex-col space-y-3">
         {message && (
           <div className="text-red border border-red p-3">
-            {message}. Did you {` `}
+            {message}.
             <a
               className="text-accent-9 inline font-bold hover:underline cursor-pointer"
               onClick={() => setModalView('FORGOT_VIEW')}
             >
-              forgot your password?
+              <FormattedMessage id="did_you_forgot_your_password" />
             </a>
           </div>
         )}
@@ -85,16 +87,16 @@ const LoginView: FC<Props> = () => {
           loading={loading}
           disabled={disabled}
         >
-          Log In
+          <FormattedMessage id="login" />
         </Button>
         <div className="pt-1 text-center text-sm">
-          <span className="text-accent-7">Don't have an account?</span>
+          <span className="text-accent-7"><FormattedMessage id="dont_have_an_account" /></span>
           {` `}
           <a
             className="text-accent-9 font-bold hover:underline cursor-pointer"
             onClick={() => setModalView('SIGNUP_VIEW')}
           >
-            Sign Up
+            <FormattedMessage id="signup" />
           </a>
         </div>
       </div>

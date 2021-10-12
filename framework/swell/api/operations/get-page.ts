@@ -35,7 +35,7 @@ export default function getPageOperation({
     config?: Partial<SwellConfig>
     preview?: boolean
   }): Promise<T['data']> {
-    const { fetch, locale = 'en-US' } = commerce.getConfig(config)
+    const { fetch, locale = 'en' } = commerce.getConfig(config)
     const id = variables.id
     const result = await fetch('content', 'get', ['pages', id])
     const page = result

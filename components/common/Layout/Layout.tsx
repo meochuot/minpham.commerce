@@ -16,6 +16,7 @@ import CheckoutSidebarView from '@components/checkout/CheckoutSidebarView'
 
 import LoginView from '@components/auth/LoginView'
 import s from './Layout.module.css'
+import { FormattedMessage, useIntl } from 'react-intl'
 
 const Loading = () => (
   <div className="w-80 h-80 flex items-center text-center justify-center p-3">
@@ -95,7 +96,8 @@ const Layout: FC<Props> = ({
   pageProps: { categories = [], ...pageProps },
 }) => {
   const { acceptedCookies, onAcceptCookies } = useAcceptCookies()
-  const { locale = 'en-US' } = useRouter()
+  const intl = useIntl();
+  const { locale = 'vi' } = useRouter()
   const navBarlinks = categories.slice(0, 2).map((c) => ({
     label: c.name,
     href: `/search/${c.slug}`,
@@ -110,11 +112,11 @@ const Layout: FC<Props> = ({
         <ModalUI />
         <SidebarUI />
         <FeatureBar
-          title="This site uses cookies to improve your experience. By clicking, you agree to our Privacy Policy."
+          title={intl.formatMessage({ id: 'accept_cookies_warning'})}
           hide={acceptedCookies}
           action={
             <Button className="mx-5" onClick={() => onAcceptCookies()}>
-              Accept cookies
+              <FormattedMessage id="accept_cookies" />
             </Button>
           }
         />

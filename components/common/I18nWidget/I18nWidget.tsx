@@ -12,19 +12,19 @@ interface LOCALE_DATA {
     alt: string
   }
 }
-
+//link flag https://github.com/HatScripts/circle-flags/tree/gh-pages/flags
 const LOCALES_MAP: Record<string, LOCALE_DATA> = {
-  es: {
-    name: 'Español',
+  "vi": {
+    name: 'Vietnamese',
     img: {
-      filename: 'flag-es-co.svg',
-      alt: 'Bandera Colombiana',
+      filename: 'vn.svg',
+      alt: 'Vietnamese',
     },
   },
-  'en-US': {
+  "en": {
     name: 'English',
     img: {
-      filename: 'flag-en-us.svg',
+      filename: 'gb.svg',
       alt: 'US Flag',
     },
   },
@@ -35,7 +35,7 @@ const I18nWidget: FC = () => {
   const {
     locale,
     locales,
-    defaultLocale = 'en-US',
+    defaultLocale = 'en',
     asPath: currentPath,
   } = useRouter()
 
