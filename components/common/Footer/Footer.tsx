@@ -78,6 +78,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
               aria-label="Vercel.com Link"
               target="_blank"
               className="text-primary"
+              style={{ width: "25px", height: "25px"}}
             >
               <Vercel
                 className="inline-block h-6 ml-3 text-primary"

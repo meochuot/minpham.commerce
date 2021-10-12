@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
+    "export": "next export",
     "start": "next start",
     "analyze": "BUNDLE_ANALYZE=both yarn build",
     "lint": "next lint",
