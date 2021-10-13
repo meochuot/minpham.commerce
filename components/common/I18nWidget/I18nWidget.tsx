@@ -1,10 +1,11 @@
 import cn from 'classnames'
 import Link from 'next/link'
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import s from './I18nWidget.module.css'
 import { Cross, ChevronUp } from '@components/icons'
 import ClickOutside from '@lib/click-outside'
+import { useLanguage } from '@hooks/useLanguage'
 interface LOCALE_DATA {
   name: string
   img: {
@@ -32,15 +33,18 @@ const LOCALES_MAP: Record<string, LOCALE_DATA> = {
 
 const I18nWidget: FC = () => {
   const [display, setDisplay] = useState(false)
-  const {
-    locale,
-    locales,
-    defaultLocale = 'en',
-    asPath: currentPath,
-  } = useRouter()
+  const [options, setOptions] = useState<string[]>([])
+  const [currentLocale, setCurrentLocale] = useState('vi')
 
-  const options = locales?.filter((val) => val !== locale)
-  const currentLocale = locale || defaultLocale
+  const { asPath: currentPath } = useRouter()
+
+  const { locale, setLocale } = useLanguage();
+  
+  useEffect( () => {
+    const filters : string[] = ['vi', 'en'].filter((val) => val !== locale)
+    setOptions(filters)
+    setCurrentLocale(locale || 'vi')
+  }, [locale])
 
   return (
     <ClickOutside active={display} onClick={() => setDisplay(false)}>
@@ -82,7 +86,7 @@ const I18nWidget: FC = () => {
                     <Link href={currentPath} locale={locale}>
                       <a
                         className={cn(s.item)}
-                        onClick={() => setDisplay(false)}
+                        onClick={() => { setLocale(locale); setDisplay(false)} }
                       >
                         {LOCALES_MAP[locale].name}
                       </a>

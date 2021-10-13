@@ -4,14 +4,14 @@ import 'keen-slider/keen-slider.min.css'
 
 import { FC, useEffect } from 'react'
 import type { AppProps } from 'next/app'
-import { useRouter } from 'next/router'
 import { IntlProvider } from 'react-intl'
 import { Head } from '@components/common'
 import { ManagedUIContext } from '@components/ui/context'
 import vi from '../locales/vi.json'
 import en from '../locales/en.json'
+import { useLanguage } from '@hooks/useLanguage'
 
-const Noop: FC = ({ children }) => <>{children}</>
+const Noop: FC = ({ children }: any) => <>{children}</>
 const messages: any = {
   'vi': vi,
   'en': en
@@ -19,15 +19,14 @@ const messages: any = {
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const Layout = (Component as any).Layout || Noop
-  const { locale, defaultLocale } = useRouter();
-  const lang = locale || defaultLocale || 'vi';
+  const { locale } = useLanguage();
   
   useEffect(() => {
     document.body.classList?.remove('loading')
   }, [])
 
   return (
-    <IntlProvider locale={lang} messages={messages[lang]} defaultLocale={defaultLocale}>
+    <IntlProvider locale={locale} messages={messages[locale]}>
       <Head />
       <ManagedUIContext>
         <Layout pageProps={pageProps}>
