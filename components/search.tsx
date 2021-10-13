@@ -27,7 +27,7 @@ import {
   getDesignerPath,
   useSearchMeta,
 } from '@lib/search'
-import { FormattedMessage } from 'react-intl'
+import { StyledText } from '@components/ui/Text'
 
 export default function Search({ categories, brands }: SearchPropsType) {
   const [activeFilter, setActiveFilter] = useState('')
@@ -129,7 +129,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                             'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4'
                           }
                         >
-                          <FormattedMessage id="all_categories" />
+                          <StyledText id="all_categories" />
                         </a>
                       </Link>
                     </li>
@@ -230,7 +230,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                             'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4'
                           }
                         >
-                          <FormattedMessage id="all_designers" />
+                          <StyledText id="all_designers" />
                         </a>
                       </Link>
                     </li>
@@ -280,7 +280,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                       hidden: !data.found,
                     })}
                   >
-                    <FormattedMessage id="showing" /> {data.products.length} <FormattedMessage id="results" />{' '}
+                    <StyledText id="showing" /> {data.products.length} <StyledText id="results" />{' '}
                     {q && (
                       <>
                         for "<strong>{q}</strong>"
@@ -295,21 +295,21 @@ export default function Search({ categories, brands }: SearchPropsType) {
                   >
                     {q ? (
                       <>
-                        <FormattedMessage id="there_no_products_match" /> "<strong>{q}</strong>"
+                        <StyledText id="there_no_products_match" /> "<strong>{q}</strong>"
                       </>
                     ) : (
                       <>
-                        <FormattedMessage id="there_no_products_match_category" />
+                        <StyledText id="there_no_products_match_category" />
                       </>
                     )}
                   </span>
                 </>
               ) : q ? (
                 <>
-                  <FormattedMessage id="searching_for" />: "<strong>{q}</strong>"
+                  <StyledText id="searching_for" />: "<strong>{q}</strong>"
                 </>
               ) : (
-                <><FormattedMessage id="searching" />...</>
+                <><StyledText id="searching" />...</>
               )}
             </div>
           )}
@@ -395,7 +395,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                             'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4'
                           }
                         >
-                          <FormattedMessage id="relevance" />
+                          <StyledText id="relevance" />
                         </a>
                       </Link>
                     </li>

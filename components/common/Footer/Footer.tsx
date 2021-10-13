@@ -6,7 +6,7 @@ import type { Page } from '@commerce/types/page'
 import getSlug from '@lib/get-slug'
 import { Container } from '@components/ui'
 import s from './Footer.module.css'
-import { FormattedMessage } from 'react-intl'
+import { StyledText } from '@components/ui/Text'
 
 interface Props {
   className?: string
@@ -46,7 +46,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
         </div>
         <div className="flex flex-col md:flex-row justify-center items-center space-y-2 pb-2 pt-2 text-accent-6 text-sm">
           <div>
-            <span>&copy; {year} <FormattedMessage id="footer_copyright_text" /></span>
+            <span>&copy; {year} <StyledText id="footer_copyright_text" /></span>
           </div>
         </div>
       </Container>

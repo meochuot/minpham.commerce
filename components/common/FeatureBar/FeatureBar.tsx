@@ -1,3 +1,4 @@
+import { StyledText } from '@components/ui/Text'
 import cn from 'classnames'
 import s from './FeatureBar.module.css'
 
@@ -27,7 +28,7 @@ const FeatureBar: React.FC<FeatureBarProps> = ({
   )
   return (
     <div className={rootClassName}>
-      <span className="block md:inline">{title}</span>
+      <span className="block md:inline"><StyledText id={title} /></span>
       <span className="block mb-6 md:inline md:mb-0 md:ml-2">
         {description}
       </span>

@@ -3,7 +3,7 @@ import { Container } from '@components/ui'
 import { ArrowRight } from '@components/icons'
 import s from './Hero.module.css'
 import Link from 'next/link'
-import { FormattedMessage } from 'react-intl'
+import { StyledText } from '@components/ui/Text'
 interface HeroProps {
   className?: string
   headline: string
@@ -20,7 +20,7 @@ const Hero: FC<HeroProps> = ({ headline, description }) => {
             <p>{description}</p>
             <Link href="/">
               <a className="flex items-center text-accent-9 pt-3 font-bold hover:underline cursor-pointer w-max-content">
-                  <FormattedMessage id="read_it_here" />
+                  <StyledText id="read_it_here" />
                 <ArrowRight width="20" heigh="20" className="ml-1" />
               </a>
             </Link>

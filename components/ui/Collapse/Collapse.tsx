@@ -4,6 +4,7 @@ import s from './Collapse.module.css'
 import { ChevronRight } from '@components/icons'
 import { useSpring, a } from '@react-spring/web'
 import useMeasure from 'react-use-measure'
+import { StyledText } from '../Text'
 
 export interface CollapseProps {
   title: string
@@ -32,7 +33,7 @@ const Collapse: FC<CollapseProps> = React.memo(({ title, children }) => {
     >
       <div className={s.header}>
         <ChevronRight className={cn(s.icon, { [s.open]: isActive })} />
-        <span className={s.label}>{title}</span>
+        <span className={s.label}><StyledText id={title} /></span>
       </div>
       <a.div style={{ overflow: 'hidden', ...animProps }}>
         <div ref={ref} className={s.content}>

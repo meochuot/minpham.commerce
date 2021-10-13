@@ -3,7 +3,7 @@ import { Logo, Button, Input } from '@components/ui'
 import useLogin from '@framework/auth/use-login'
 import { useUI } from '@components/ui/context'
 import { validate } from 'email-validator'
-import { FormattedMessage } from 'react-intl'
+import { StyledText } from '@components/ui/Text'
 
 interface Props {}
 
@@ -74,7 +74,7 @@ const LoginView: FC<Props> = () => {
               className="text-accent-9 inline font-bold hover:underline cursor-pointer"
               onClick={() => setModalView('FORGOT_VIEW')}
             >
-              <FormattedMessage id="did_you_forgot_your_password" />
+              <StyledText id="did_you_forgot_your_password" />
             </a>
           </div>
         )}
@@ -87,16 +87,16 @@ const LoginView: FC<Props> = () => {
           loading={loading}
           disabled={disabled}
         >
-          <FormattedMessage id="login" />
+          <StyledText id="login" />
         </Button>
         <div className="pt-1 text-center text-sm">
-          <span className="text-accent-7"><FormattedMessage id="dont_have_an_account" /></span>
+          <span className="text-accent-7"><StyledText id="dont_have_an_account" /></span>
           {` `}
           <a
             className="text-accent-9 font-bold hover:underline cursor-pointer"
             onClick={() => setModalView('SIGNUP_VIEW')}
           >
-            <FormattedMessage id="signup" />
+            <StyledText id="signup" />
           </a>
         </div>
       </div>

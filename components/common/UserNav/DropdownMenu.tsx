@@ -15,7 +15,7 @@ import {
   enableBodyScroll,
   clearAllBodyScrollLocks,
 } from 'body-scroll-lock'
-import { FormattedMessage } from 'react-intl'
+import { StyledText } from '@components/ui/Text'
 
 interface DropdownMenuProps {
   open?: boolean
@@ -97,7 +97,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
                 }}
               >
                 <div>
-                  <FormattedMessage id="themes" />: <strong>{theme}</strong>{' '}
+                  <StyledText id="themes" />: <strong>{theme}</strong>{' '}
                 </div>
                 <div className="ml-3">
                   {theme == 'dark' ? (
@@ -113,7 +113,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
                 className={cn(s.link, 'border-t border-accent-2 mt-4')}
                 onClick={() => logout()}
               >
-                <FormattedMessage id="logout" />
+                <StyledText id="logout" />
               </a>
             </li>
           </ul>

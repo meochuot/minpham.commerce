@@ -16,17 +16,17 @@ interface LOCALE_DATA {
 //link flag https://github.com/HatScripts/circle-flags/tree/gh-pages/flags
 const LOCALES_MAP: Record<string, LOCALE_DATA> = {
   "vi": {
-    name: 'Vietnamese',
+    name: 'Tiếng Việt',
     img: {
       filename: 'vn.svg',
-      alt: 'Vietnamese',
+      alt: 'Tiếng Việt',
     },
   },
   "en": {
     name: 'English',
     img: {
       filename: 'gb.svg',
-      alt: 'US Flag',
+      alt: 'English',
     },
   },
 }

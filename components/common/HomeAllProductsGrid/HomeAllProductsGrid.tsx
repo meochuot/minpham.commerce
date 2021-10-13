@@ -5,7 +5,7 @@ import { Grid } from '@components/ui'
 import { ProductCard } from '@components/product'
 import s from './HomeAllProductsGrid.module.css'
 import { getCategoryPath, getDesignerPath } from '@lib/search'
-import { FormattedMessage } from 'react-intl'
+import { StyledText } from '@components/ui/Text'
 
 interface Props {
   categories?: any
@@ -25,7 +25,7 @@ const HomeAllProductsGrid: FC<Props> = ({
           <ul className="mb-10">
             <li className="py-1 text-base font-bold tracking-wide">
               <Link href={getCategoryPath('')}>
-                <a><FormattedMessage id="all_categories" /></a>
+                <a><StyledText id="all_categories" /></a>
               </Link>
             </li>
             {categories.map((cat: any) => (
@@ -39,7 +39,7 @@ const HomeAllProductsGrid: FC<Props> = ({
           <ul className="">
             <li className="py-1 text-base font-bold tracking-wide">
               <Link href={getDesignerPath('')}>
-                <a><FormattedMessage id="all_designers" /></a>
+                <a><StyledText id="all_designers" /></a>
               </Link>
             </li>
             {brands.flatMap(({ node }: any) => (

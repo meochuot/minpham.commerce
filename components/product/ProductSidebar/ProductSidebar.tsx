@@ -9,7 +9,7 @@ import {
   selectDefaultOptionFromProduct,
   SelectedOptions,
 } from '../helpers'
-import { FormattedMessage, useIntl } from 'react-intl'
+import { StyledText } from '@components/ui/Text'
 
 interface ProductSidebarProps {
   product: Product
@@ -18,7 +18,6 @@ interface ProductSidebarProps {
 
 const ProductSidebar: FC<ProductSidebarProps> = ({ product, className }) => {
   const addItem = useAddItem()
-  const intl = useIntl()
   const { openSidebar } = useUI()
   const [loading, setLoading] = useState(false)
   const [selectedOptions, setSelectedOptions] = useState<SelectedOptions>({})
@@ -68,17 +67,17 @@ const ProductSidebar: FC<ProductSidebarProps> = ({ product, className }) => {
             disabled={variant?.availableForSale === false}
           >
             {variant?.availableForSale === false
-              ? <FormattedMessage id="not_available" />
-              : <FormattedMessage id="add_to_cart" />}
+              ? <StyledText id="not_available" />
+              : <StyledText id="add_to_cart" />}
           </Button>
         )}
       </div>
       <div className="mt-6">
-        <Collapse title={intl.formatMessage({id: 'care'})}>
+        <Collapse title={'care'}>
           This is a limited edition production run. Printing starts when the
           drop ends.
         </Collapse>
-        <Collapse title={intl.formatMessage({id: 'details'})}>
+        <Collapse title={'details'}>
           This is a limited edition production run. Printing starts when the
           drop ends. Reminder: Bad Boys For Life. Shipping may take 10+ days due
           to COVID-19.

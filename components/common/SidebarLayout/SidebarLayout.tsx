@@ -3,7 +3,7 @@ import { Cross, ChevronLeft } from '@components/icons'
 import { UserNav } from '@components/common'
 import cn from 'classnames'
 import s from './SidebarLayout.module.css'
-import { FormattedMessage } from 'react-intl'
+import { StyledText } from '@components/ui/Text'
 
 type ComponentProps = { className?: string } & (
   | { handleClose: () => any; handleBack?: never }
@@ -26,7 +26,7 @@ const SidebarLayout: FC<ComponentProps> = ({
             className="hover:text-accent-5 transition ease-in-out duration-150 flex items-center focus:outline-none"
           >
             <Cross className="h-6 w-6 hover:text-accent-3" />
-            <span className="ml-2 text-accent-7 text-sm "><FormattedMessage id="close" /></span>
+            <span className="ml-2 text-accent-7 text-sm "><StyledText id="close" /></span>
           </button>
         )}
         {handleBack && (
@@ -36,7 +36,7 @@ const SidebarLayout: FC<ComponentProps> = ({
             className="hover:text-accent-5 transition ease-in-out duration-150 flex items-center focus:outline-none"
           >
             <ChevronLeft className="h-6 w-6 hover:text-accent-3" />
-            <span className="ml-2 text-accent-7 text-xs"><FormattedMessage id="back" /></span>
+            <span className="ml-2 text-accent-7 text-xs"><StyledText id="back" /></span>
           </button>
         )}
         <span className={s.nav}>

@@ -1,8 +1,9 @@
-import { FC, memo, useEffect } from 'react'
+import { FC, useMemo, useEffect } from 'react'
 import cn from 'classnames'
 import s from './Searchbar.module.css'
 import { useRouter } from 'next/router'
-import { useIntl, FormattedMessage } from 'react-intl'
+import { StyledText } from '@components/ui/Text'
+import { useTranslate } from '@hooks/useTranslate'
 interface Props {
   className?: string
   id?: string
@@ -10,8 +11,8 @@ interface Props {
 
 const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
   const router = useRouter()
-  const intl = useIntl();
-
+  const searchPlaceHolder = useTranslate('search_placeholder');
+  
   useEffect(() => {
     router.prefetch('/search')
   }, [router])
@@ -33,15 +34,15 @@ const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
     }
   }
 
-  return (
+  return useMemo( () => (
     <div className={cn(s.root, className)}>
       <label className="hidden" htmlFor={id}>
-        <FormattedMessage id="search" />
+        <StyledText id="search" />
       </label>
       <input
         id={id}
         className={s.input}
-        placeholder={intl.formatMessage({id: 'search_placeholder'})}
+        placeholder={searchPlaceHolder}
         defaultValue={router.query.q}
         onKeyUp={handleKeyUp}
       />
@@ -55,7 +56,7 @@ const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
         </svg>
       </div>
     </div>
-  )
+  ), [searchPlaceHolder])
 }
 
-export default memo(Searchbar)
+export default Searchbar

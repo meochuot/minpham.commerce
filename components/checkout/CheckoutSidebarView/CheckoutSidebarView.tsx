@@ -10,7 +10,7 @@ import useCheckout from '@framework/checkout/use-checkout'
 import ShippingWidget from '../ShippingWidget'
 import PaymentWidget from '../PaymentWidget'
 import s from './CheckoutSidebarView.module.css'
-import { FormattedMessage } from 'react-intl'
+import { StyledText } from '@components/ui/Text'
 
 const CheckoutSidebarView: FC = () => {
   const { setSidebarView, closeSidebar } = useUI()
@@ -77,20 +77,20 @@ const CheckoutSidebarView: FC = () => {
       >
         <ul className="pb-2">
           <li className="flex justify-between py-1">
-            <span><FormattedMessage id="sub_total" /></span>
+            <span><StyledText id="sub_total" /></span>
             <span>{subTotal}</span>
           </li>
           <li className="flex justify-between py-1">
-            <span><FormattedMessage id="taxes" /></span>
-            <span><FormattedMessage id="calculated_at_checkout" /></span>
+            <span><StyledText id="taxes" /></span>
+            <span><StyledText id="calculated_at_checkout" /></span>
           </li>
           <li className="flex justify-between py-1">
-            <span><FormattedMessage id="shipping" /></span>
-            <span className="font-bold tracking-wide"><FormattedMessage id="FREE" /></span>
+            <span><StyledText id="shipping" /></span>
+            <span className="font-bold tracking-wide"><StyledText id="FREE" /></span>
           </li>
         </ul>
         <div className="flex justify-between border-t border-accent-2 py-3 font-bold mb-2">
-          <span><FormattedMessage id="total" /></span>
+          <span><StyledText id="total" /></span>
           <span>{total}</span>
         </div>
         <div>
@@ -100,7 +100,7 @@ const CheckoutSidebarView: FC = () => {
             width="100%"
             disabled={!checkoutData?.hasPayment || !checkoutData?.hasShipping}
           >
-            <FormattedMessage id="confirm_purchase" />
+            <StyledText id="confirm_purchase" />
           </Button>
         </div>
       </form>

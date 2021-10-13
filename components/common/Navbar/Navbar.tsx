@@ -5,7 +5,7 @@ import NavbarRoot from './NavbarRoot'
 import { Logo, Container } from '@components/ui'
 import { Searchbar, UserNav } from '@components/common'
 import { I18nWidget } from '@components/common'
-import { FormattedMessage } from 'react-intl'
+import { StyledText } from '@components/ui/Text'
 
 interface Link {
   href: string
@@ -27,7 +27,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
           </Link>
           <nav className={s.navMenu}>
             <Link href="/search">
-              <a className={s.link}><FormattedMessage id="all" /></a>
+              <a className={s.link}><StyledText id="all" /></a>
             </Link>
             {links?.map((l) => (
               <Link href={l.href} key={l.href}>
