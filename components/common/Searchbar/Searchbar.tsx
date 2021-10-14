@@ -56,7 +56,7 @@ const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
         </svg>
       </div>
     </div>
-  ), [searchPlaceHolder])
+  ), [searchPlaceHolder, className, handleKeyUp, id, router.query.q])
 }
 
 export default Searchbar

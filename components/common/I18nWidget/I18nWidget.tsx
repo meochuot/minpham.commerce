@@ -1,11 +1,11 @@
 import cn from 'classnames'
 import Link from 'next/link'
-import { FC, useEffect, useState } from 'react'
+import { FC, useState } from 'react'
 import { useRouter } from 'next/router'
 import s from './I18nWidget.module.css'
 import { Cross, ChevronUp } from '@components/icons'
 import ClickOutside from '@lib/click-outside'
-import { useLanguage } from '@hooks/useLanguage'
+import Image from '@components/ui/Image/Image'
 interface LOCALE_DATA {
   name: string
   img: {
@@ -33,18 +33,16 @@ const LOCALES_MAP: Record<string, LOCALE_DATA> = {
 
 const I18nWidget: FC = () => {
   const [display, setDisplay] = useState(false)
-  const [options, setOptions] = useState<string[]>([])
-  const [currentLocale, setCurrentLocale] = useState('vi')
-
-  const { asPath: currentPath } = useRouter()
-
-  const { locale, setLocale } = useLanguage();
   
-  useEffect( () => {
-    const filters : string[] = ['vi', 'en'].filter((val) => val !== locale)
-    setOptions(filters)
-    setCurrentLocale(locale || 'vi')
-  }, [locale])
+  const { 
+    locale,
+    locales,
+    defaultLocale = 'vi',
+    asPath: currentPath 
+  } = useRouter()
+
+  const options = locales?.filter((val) => val !== locale)
+  const currentLocale = locale || defaultLocale
 
   return (
     <ClickOutside active={display} onClick={() => setDisplay(false)}>
@@ -54,7 +52,7 @@ const I18nWidget: FC = () => {
           onClick={() => setDisplay(!display)}
         >
           <button className={s.button} aria-label="Language selector">
-            <img
+            <Image
               width="20"
               height="20"
               className="block mr-2 w-5"
@@ -86,7 +84,7 @@ const I18nWidget: FC = () => {
                     <Link href={currentPath} locale={locale}>
                       <a
                         className={cn(s.item)}
-                        onClick={() => { setLocale(locale); setDisplay(false)} }
+                        onClick={() =>  setDisplay(false) }
                       >
                         {LOCALES_MAP[locale].name}
                       </a>

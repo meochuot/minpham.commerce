@@ -40,7 +40,7 @@ const ForgotPassword = dynamic(
 
 const FeatureBar = dynamic(
   () => import('@components/common/FeatureBar'),
-  dynamicProps
+  //dynamicProps
 )
 
 interface Props {

@@ -1,7 +1,9 @@
+import Image from "@components/ui/Image/Image"
+
 const Vercel = ({ ...props }) => {
   return (
     <span>
-      <img src="/logo.svg" alt="" style={{maxWidth: "100%"}} />
+      <Image src="/logo.svg" alt=""  />
     </span>
   )
 }
