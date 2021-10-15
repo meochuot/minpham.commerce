@@ -4,6 +4,7 @@ import useLogin from '@framework/auth/use-login'
 import { useUI } from '@components/ui/context'
 import { validate } from 'email-validator'
 import { StyledText } from '@components/ui/Text'
+import { useTranslate } from '@hooks/useTranslate'
 
 interface Props {}
 
@@ -18,6 +19,8 @@ const LoginView: FC<Props> = () => {
   const { setModalView, closeModal } = useUI()
 
   const login = useLogin()
+  const emailText = useTranslate('email');
+  const passwordText = useTranslate('password');
 
   const handleLogin = async (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault()
@@ -63,7 +66,7 @@ const LoginView: FC<Props> = () => {
       onSubmit={handleLogin}
       className="w-80 flex flex-col justify-between p-3"
     >
-      <div className="flex justify-center pb-12 ">
+      <div className="flex justify-center pb-5">
         <Logo width="64px" height="64px" />
       </div>
       <div className="flex flex-col space-y-3">
@@ -78,8 +81,8 @@ const LoginView: FC<Props> = () => {
             </a>
           </div>
         )}
-        <Input type="email" placeholder="Email" onChange={setEmail} />
-        <Input type="password" placeholder="Password" onChange={setPassword} />
+        <Input type="email" placeholder={emailText} onChange={setEmail} />
+        <Input type="password" placeholder={passwordText} onChange={setPassword} />
 
         <Button
           variant="slim"

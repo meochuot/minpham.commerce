@@ -5,6 +5,7 @@ import { useUI } from '@components/ui/context'
 import { Logo, Button, Input } from '@components/ui'
 import useSignup from '@framework/auth/use-signup'
 import { StyledText } from '@components/ui/Text'
+import { useTranslate } from '@hooks/useTranslate'
 
 interface Props {}
 
@@ -21,6 +22,11 @@ const SignUpView: FC<Props> = () => {
 
   const signup = useSignup()
   const { setModalView, closeModal } = useUI()
+
+  const firstNameText = useTranslate('first_name');
+  const lastNameText = useTranslate('first_name');
+  const emailText = useTranslate('email');
+  const passwordText = useTranslate('password');
 
   const handleSignup = async (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault()
@@ -67,17 +73,17 @@ const SignUpView: FC<Props> = () => {
       onSubmit={handleSignup}
       className="w-80 flex flex-col justify-between p-3"
     >
-      <div className="flex justify-center pb-12 ">
+      <div className="flex justify-center pb-5">
         <Logo width="64px" height="64px" />
       </div>
       <div className="flex flex-col space-y-4">
         {message && (
           <div className="text-red border border-red p-3">{message}</div>
         )}
-        <Input placeholder="First Name" onChange={setFirstName} />
-        <Input placeholder="Last Name" onChange={setLastName} />
-        <Input type="email" placeholder="Email" onChange={setEmail} />
-        <Input type="password" placeholder="Password" onChange={setPassword} />
+        <Input placeholder={firstNameText} onChange={setFirstName} />
+        <Input placeholder={lastNameText} onChange={setLastName} />
+        <Input type="email" placeholder={emailText} onChange={setEmail} />
+        <Input type="password" placeholder={passwordText} onChange={setPassword} />
         <span className="text-accent-8">
           <span className="inline-block align-middle ">
             <Info width="15" height="15" />

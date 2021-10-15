@@ -3,6 +3,7 @@ import { validate } from 'email-validator'
 import { useUI } from '@components/ui/context'
 import { Logo, Button, Input } from '@components/ui'
 import { StyledText } from '@components/ui/Text'
+import { useTranslate } from '@hooks/useTranslate'
 
 interface Props {}
 
@@ -15,7 +16,7 @@ const ForgotPassword: FC<Props> = () => {
   const [disabled, setDisabled] = useState(false)
 
   const { setModalView, closeModal } = useUI()
-
+  const emailText = useTranslate('email');
   const handleResetPassword = async (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault()
 
@@ -41,7 +42,7 @@ const ForgotPassword: FC<Props> = () => {
       onSubmit={handleResetPassword}
       className="w-80 flex flex-col justify-between p-3"
     >
-      <div className="flex justify-center pb-12 ">
+      <div className="flex justify-center pb-5">
         <Logo width="64px" height="64px" />
       </div>
       <div className="flex flex-col space-y-4">
@@ -49,7 +50,7 @@ const ForgotPassword: FC<Props> = () => {
           <div className="text-red border border-red p-3">{message}</div>
         )}
 
-        <Input placeholder="Email" onChange={setEmail} type="email" />
+        <Input placeholder={emailText} onChange={setEmail} type="email" />
         <div className="pt-2 w-full flex flex-col">
           <Button
             variant="slim"
