@@ -1,0 +1,17 @@
+FROM node:lts-alpine as builder
+WORKDIR /app
+COPY package.json turbo.json yarn.lock site/ packages/ ./
+RUN yarn
+RUN yarn build
+
+FROM node:lts-alpine as runner
+ENV NODE_ENV production
+WORKDIR /app
+COPY --from=builder /app/site/public ./public
+COPY --from=builder /app/site/.next ./.next
+COPY --from=builder /app/site/.turbo ./.turbo
+COPY --from=builder /app/site/node_modules ./node_modules
+COPY --from=builder /app/site/package.json ./package.json
+# use for production instead of dev
+CMD yarn next start -p 8080
+# CMD yarn next dev -p 8080

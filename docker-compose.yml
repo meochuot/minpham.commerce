@@ -1,0 +1,11 @@
+version: '3.9'
+
+services:
+  app:
+    build: ./
+    restart: always
+    ports:
+      - 8000:8080
+    volumes:
+      - ./site/:/app/site/
+      - ./packages/:/app/packages/
